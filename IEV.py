@@ -14,6 +14,3 @@ Sl = [int(x) for x in sample.split(' ')]
 EV = N*sum([s*p for s, p in zip(Sl, Pl)]);
 
 print(EV)
-
-
-
