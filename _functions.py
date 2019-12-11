@@ -6,6 +6,23 @@ def read_fasta(filename):
     entries = dict(map(lambda e: [i.replace('\n', '') for i in e.split('\n', 1)][::-1], sample.lstrip('>').split('>')))
     return list(entries.keys())
 
+# Read codon table file
+def dna_codon_table():
+    dna_codon_table_file = open("DNA-codon-table.txt")
+    dna_codon_table = dna_codon_table_file.read()
+    dna_codon_list = list(filter(None, dna_codon_table.replace('   ','\n').split('\n'))) # Convert codon table to lookup dictionary
+    return dict(map(lambda e: e.split(' '), dna_codon_list))
+
+# Read sample file with one FASTA entry
+def get_fasta():
+    file = open('ORF.txt')
+    sample = file.read()
+    # Read one entry FASTA format
+    return [i.replace('\n', '') for i in sample.lstrip('>').split('\n', 1)][1]
+
+def get_reverse_complement(p):
+    nt = {'A': 'T', 'C': 'G', 'G': 'C', 'T': 'A'}
+    return ''.join([nt[n] for n in p[::-1]])
 
 # Convert integer to Base of DNA nucleotides
 def int2dnabase(x, ):
