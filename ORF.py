@@ -28,7 +28,9 @@ def get_orf_all_starts(s):
     return [i for i in range(len(s)) if s.startswith('ATG', i)]
 
 
+# Iterate string and check against codon lookup until Stop found
 def get_protein_candidates(s):
+    dcd = get_dna_codon_table()
     starts = get_orf_all_starts(s)
     proteins = []
     for pos in starts:
@@ -45,11 +47,9 @@ def get_protein_candidates(s):
 
 
 # Main code starts
-dcd = get_dna_codon_table()
 p = get_fasta()
 revp = get_reverse_complement(p)
-
-print('\n'.join(list(set(get_protein_candidates(p) + get_protein_candidates(revp)))))
+print('\n'.join(set(get_protein_candidates(p) + get_protein_candidates(revp))))
 
 # print(p)
 # print(revp)
