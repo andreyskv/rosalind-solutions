@@ -14,8 +14,8 @@ def dna_codon_table():
     return dict(map(lambda e: e.split(' '), dna_codon_list))
 
 # Read sample file with one FASTA entry
-def get_fasta():
-    file = open('ORF.txt')
+def get_fasta(filename):
+    file = open(filename)
     sample = file.read()
     # Read one entry FASTA format
     return [i.replace('\n', '') for i in sample.lstrip('>').split('\n', 1)][1]
