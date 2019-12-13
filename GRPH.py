@@ -1,7 +1,7 @@
 #Overlap Graphs
 
 # Read FASTA format file
-file = open("GRPH.txt")
+file = open("Data/GRPH.txt")
 sample = file.read()
 # Convert FASTA string into dictonary
 entries = dict(map(lambda e:[i.replace('\n','') for i in e.split('\n',1)][::-1], sample.lstrip('>').split('>')))

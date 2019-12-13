@@ -1,5 +1,5 @@
 # Read FASTA format file
-gc_file = open("GC.txt")
+gc_file = open("Data/GC.txt")
 gc_sample = gc_file.read()
 
 # Convert FASTA string into dictonary

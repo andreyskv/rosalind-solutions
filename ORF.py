@@ -3,7 +3,7 @@
 
 # Read codon table file
 def get_dna_codon_table():
-    dna_codon_table_file = open("DNA-codon-table.txt")
+    dna_codon_table_file = open("Data/DNA-codon-table.txt")
     dna_codon_table = dna_codon_table_file.read()
     dna_codon_list = list(filter(None, dna_codon_table.replace('   ','\n').split('\n'))) # Convert codon table to lookup dictionary
     return dict(map(lambda e: e.split(' '), dna_codon_list))
@@ -11,7 +11,7 @@ def get_dna_codon_table():
 
 # Read sample file with one FASTA entry
 def get_fasta():
-    file = open('ORF.txt')
+    file = open('Data/ORF.txt')
     sample = file.read()
     # Read one entry FASTA format
     return [i.replace('\n', '') for i in sample.lstrip('>').split('\n', 1)][1]

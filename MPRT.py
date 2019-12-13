@@ -1,7 +1,7 @@
 # Finding a Protein Motif
 
 from urllib.request import urlopen
-file = open('MPRT.txt')
+file = open('Data/MPRT.txt')
 sample = file.read()
 protein_ids = sample.split('\n')
 

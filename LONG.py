@@ -1,7 +1,7 @@
 # Genome Assembly as Shortest Superstring
 
 # Read FASTA format file
-file = open("LONG.txt")
+file = open("Data/LONG.txt")
 sample = file.read()
 # Convert FASTA string into dictonary
 entries = dict(map(lambda e: [i.replace('\n', '') for i in e.split('\n', 1)][::-1], sample.lstrip('>').split('>')))

@@ -11,7 +11,7 @@ def read_fasta(filename):
     return list(entries.keys())
 
 
-dna_list = read_fasta('LCSM.txt')
+dna_list = read_fasta('Data/LCSM.txt')
 dna_list_length = len(dna_list)
 # print(dna_list)
 

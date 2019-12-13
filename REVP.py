@@ -14,7 +14,7 @@ def get_reverse_complement(p):
     return ''.join([nt[n] for n in p[::-1]])
 
 
-dna = get_fasta('REVP.txt')
+dna = get_fasta('Data/REVP.txt')
 
 for i in range(0, len(dna)):
     for l in range(4, len(dna) - i + 1, 2):
