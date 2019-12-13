@@ -21,7 +21,3 @@ rna_cnt = [rna_cnt_dict[x] for x in s]               # Map sample list to the di
 res = reduce(lambda x, y: x * y , rna_cnt) % 1000000  # Multiply all values in the list with modulo 1M
 print(res)
 
-
-
-
-
