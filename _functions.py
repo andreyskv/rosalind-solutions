@@ -7,11 +7,11 @@ def read_fasta(filename):
     return list(entries.keys())
 
 # Read codon table file
-def dna_codon_table():
-    dna_codon_table_file = open("Data/DNA-codon-table.txt")
-    dna_codon_table = dna_codon_table_file.read()
-    dna_codon_list = list(filter(None, dna_codon_table.replace('   ','\n').split('\n'))) # Convert codon table to lookup dictionary
-    return dict(map(lambda e: e.split(' '), dna_codon_list))
+def get_codon_table(filename):
+    codon_table_file = open(filename)
+    codon_table = codon_table_file.read()
+    codon_list = list(filter(None, codon_table.replace('   ','\n').split('\n'))) # Convert codon table to lookup dictionary
+    return dict(map(lambda e: e.split(' '), codon_list))
 
 # Read sample file with one FASTA entry
 def get_fasta(filename):
