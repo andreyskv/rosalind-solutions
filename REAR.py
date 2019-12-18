@@ -36,11 +36,11 @@ def hamming_distance(x, y):
     return sum([j != x[i] for i, j in enumerate(y)])
 
 
-def search(a1, b1, dist, c):
+def search(dist, c):
     global sol
 
     # new_dist = hamming_distance(a1, b1)  # Use hamming distance as pruning method (weaker but much faster convergence method)
-    bps = breakpoint_cnt(b1)               # Use minimal breakpoint distance method (much stronger method but slow convergence for depth 9)
+    bps = breakpoint_cnt(b)               # Use minimal breakpoint distance method (much stronger method but slow convergence for depth 9)
     new_dist = len(bps)
     if new_dist >= dist:  # Pruning to avoid full recursion. We cut this branch and exit if the new distance is not better than on the previous step.
         return
@@ -56,9 +56,9 @@ def search(a1, b1, dist, c):
         # for j in range(i + 1, N): # Loop if hamming distance pruning is used
         for j in bps:            # Look only at segments that end at breakpoints
             if j - i > 1:
-                b1[i:j+1] = b1[i:j+1][::-1]
-                search(a1, b, new_dist, c)
-                b1[i:j + 1] = b1[i:j + 1][::-1]  # Intead of creating a copy of the list we revert b to original state for the next step
+                b[i:j+1] = b[i:j+1][::-1]
+                search(new_dist, c)
+                b[i:j + 1] = b[i:j + 1][::-1]  # Intead of creating a copy of the list we revert b to original state for the next step
 
 
 result = []
@@ -77,7 +77,7 @@ for p in pairs:
     # start = hamming_distance(a, b)
     start_bps = breakpoint_cnt(b)
     start = len(start_bps)
-    search(a, b, start + 1, 0)
+    search(start + 1, 0)
 
     print(sol)
     result.append(sol)
