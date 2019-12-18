@@ -56,9 +56,9 @@ def search(a1, b1, dist, c):
         # for j in range(i + 1, N): # Loop if hamming distance pruning is used
         for j in bps:            # Look only at segments that end at breakpoints
             if j - i > 1:
-                b[i:j+1] = b[i:j+1][::-1]
+                b1[i:j+1] = b1[i:j+1][::-1]
                 search(a1, b, new_dist, c)
-                b[i:j + 1] = b[i:j + 1][::-1]  # Intead of creating a copy of the list we revert b to original state for the next step
+                b1[i:j + 1] = b1[i:j + 1][::-1]  # Intead of creating a copy of the list we revert b to original state for the next step
 
 
 result = []
@@ -85,3 +85,4 @@ for p in pairs:
 print (' '.join(str(x) for x in result))
 
 print("time elapsed: {:.2f}s".format(time.time() - start_time))
+
