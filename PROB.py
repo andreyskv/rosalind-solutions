@@ -7,8 +7,9 @@ cgs = [float(x) for x in probs.split(' ')]
 
 result = []
 for cg in cgs:
-    probs = [cg/2 if (x == 'C' or x == 'G') else (1-cg)/2 for x in s]
-    result.append(round(sum(log10(x) for x in probs), 3))
+    # Probability of occurance of each of the letter in 's' for the given CG content 'cg'
+    probs1 = [cg/2 if (x == 'C' or x == 'G') else (1-cg)/2 for x in s]
+    result.append(round(sum(log10(x) for x in probs1), 3))  # Use the fact that log(xy)=log(x) + log(y)
 
 print(' '.join(str(x) for x in result))
 
