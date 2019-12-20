@@ -28,9 +28,9 @@ def breakpt(x):
     return breakpoints
 
 
-# # # Hamming distance betwen x and y is number of places where values don't match
-# def hamming_distance(x, y):
-#     return sum([j != x[i] for i, j in enumerate(y)])
+# # Hamming distance betwen x and y is number of places where values don't match
+def hamming_distance(x, y):
+    return sum([j != x[i] for i, j in enumerate(y)])
 
 
 # Queue element will store the following tuple elements
@@ -47,7 +47,9 @@ def search(b1):
         sol = 0
         return
 
+    # q.append((b1, 0, bps))
     q = deque([(b1, 0, bps)])
+
     while q:
 
         b_cur, level, bps = q.popleft()
@@ -59,8 +61,9 @@ def search(b1):
             sol = level
             break
 
-        for i in range(N-2):   # Create all possible reversal lists
-            for j in bps:      # Look only at segments that end at breakpoints
+        for i in range(N-2):   # Loop over and create all possible reversal lists and use it as new input for search
+            # for j in range(i + 1, N):
+            for j in bps:            # Look only at segments that end at breakpoints
                 if j - i > 1:
 
                     b_new = b_cur.copy()
@@ -71,9 +74,9 @@ def search(b1):
 
                     if new_dist >= dist:  # Pruning. If the new distance is not better than on the previous level then going to ignore this branch.
                         continue
-                    elif new_dist == 0:   # We are done! The distance is 0 which means the new string matches the target exactly.
+                    elif new_dist == 0:  # We are done! The distance is 0 which means the new string matches the target exactly.
                         sol = level
-                        continue
+                        return
                     q.append((b_new, level, new_bps))  # add to the queue only if potential candidate to find solution on the next level
 
 
@@ -87,8 +90,8 @@ for p in pairs:
     a = [int(x) for x in p[0].split(' ')]
     b = [int(x) for x in p[1].split(' ')]
 
-    b = normalize(b,a)
-    a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    b = normalize(a,b)
+    # a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     search(b)
 
     print(sol)
