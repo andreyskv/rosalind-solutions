@@ -1,3 +1,5 @@
+# Some functions I wrote to reuse in solutions
+
 # Read FASTA format file
 def read_fasta(filename):
     file = open(filename)
@@ -19,6 +21,13 @@ def get_fasta(filename):
     sample = file.read()
     # Read one entry FASTA format
     return [i.replace('\n', '') for i in sample.lstrip('>').split('\n', 1)][1]
+
+# Read mass table file
+def get_mass_table(filename):
+    mass_table_file = open(filename)
+    mass_table = mass_table_file.read()
+    d = dict(map(lambda e:  e.split(), mass_table.split('\n')))
+    return dict([key,float(value)]  for key, value in d.items())
 
 def get_reverse_complement(p):
     nt = {'A': 'T', 'C': 'G', 'G': 'C', 'T': 'A'}
