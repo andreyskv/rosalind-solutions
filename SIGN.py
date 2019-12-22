@@ -13,7 +13,7 @@ def build_sign_matrix(seed, level):
         return
     sign_matrix.add(seed)
     for i in range(0, N):
-        build_sign_matrix(seed[:i]+ (-1,) + seed[i+1:], level+1)
+        build_sign_matrix(seed[:i] + (-1,) + seed[i+1:], level+1)
 
 
 build_sign_matrix(tuple([1]*N), -1)
