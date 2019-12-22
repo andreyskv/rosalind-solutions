@@ -1,5 +1,8 @@
 # Finding a Shared Motif
 
+import time
+start_time = time.time()
+
 nucleotides = ['A', 'C', 'G', 'T']
 
 # Read FASTA format file
@@ -26,5 +29,19 @@ while new_picks:  # Search until the new candidates list has anything in it
                 new_picks.append(new_p)  # Store it
     if new_picks:  # Swap new candidates with candidates list. Candidates are now former new candidates.
         picks, new_picks = new_picks, picks
-
 print(picks)
+
+# Note: possibly a little shorter solution is to use a queue instead of tracking lists swaps on each layer for BFS
+# Performance turns out to be identical for both methods
+# Queue method
+# pick = ''
+# q = deque(nucleotides.copy())
+# while q:
+#     pick = q.popleft()
+#     for n in nucleotides:
+#         new_p = pick + n
+#         if len([n for n in dna_list if new_p in n]) == len(dna_list):
+#             q.append(new_p)
+# print(pick)
+
+print("time elapsed: {:.2f}s".format(time.time() - start_time))
