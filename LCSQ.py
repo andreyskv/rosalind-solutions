@@ -1,5 +1,5 @@
 # Finding a Shared Spliced Motif
-# The best explanation of the DP algorithm https://www.youtube.com/watch?v=NnD96abizww
+# The best explanation of the Hirschberg  algorithm https://www.youtube.com/watch?v=NnD96abizww
 
 import time
 start_time = time.time()
