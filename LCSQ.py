@@ -1,5 +1,5 @@
 # Finding a Shared Spliced Motif
-# The best explanation of the Hirschberg  algorithm https://www.youtube.com/watch?v=NnD96abizww
+# The best explanation of the Needleman–Wunsch algorithm https://www.youtube.com/watch?v=NnD96abizww
 
 import time
 start_time = time.time()
@@ -32,9 +32,9 @@ i, j = sN, tN
 while i > 0 and j > 0:
     l, d, u = m[i-1][j], m[i-1][j-1], m[i][j-1]  # left, diagonal and up elements relative to m[i][j]
     if l < m[i][j] > u and m[i][j] > d:  # if greater than diagonal and also greater than any sides we take it and move diagonally.
-        r += s[i]  # build the string, alternatively r += t[j]
         i -= 1
         j -= 1
+        r += s[i]  # build the string, alternatively r += t[j]
     elif m[i][j] == l:  # Move in the direction of the largest number in the matrix
         i -= 1
     elif m[i][j] == u:  # Move in the direction of the largest number in the matrix
