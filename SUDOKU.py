@@ -5,12 +5,14 @@ N = 9
 iterations = 0
 board = []
 board_start = []
+
+#Transform sudoku string into 2d array board
 for p in range(1, N + 1):
     row = [int(q) for q in list(sudoku[(p - 1) * N:p * N])]
     print(row)
     board_start.append(row)
 
-#create deep copy of the original sudoku board
+#Create deep copy of the original sudoku board
 for r in board_start:
     board.append(r.copy())
 
@@ -22,26 +24,14 @@ def is_valid(brd, y, x, val):
     if val in brd[x]:
         return False
 
-    # Check the column y not having val
+    #Check the column y not having val
     if val in [col[y] for col in brd]:
         return False
 
     #Find top left coords of the 3x3 square
-    if x < 3:
-        xc = 0
-    elif x < 6:
-        xc = 3
-    else:
-        xc = 6
-
-    if y < 3:
-        yc = 0
-    elif y < 6:
-        yc = 3
-    else:
-        yc = 6
-
-    # Check if the square contains val
+    xc = (x // 3) * 3
+    yc = (y // 3) * 3
+    #Check if the square contains val
     for col in brd[xc:xc + 3]:
         if val in col[yc:yc + 3]:
             return False
